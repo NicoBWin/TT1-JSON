@@ -1,0 +1,102 @@
+[
+  {
+    "casa": {
+      "agencia": "349",
+      "compra": "92,900",
+      "decimales": "3",
+      "nombre": "Dolar Oficial",
+      "variacion": "-0,070",
+      "venta": "98,900",
+      "ventaCero": "TRUE"
+    }
+  },
+  {
+    "casa": {
+      "agencia": "310",
+      "compra": "146,000",
+      "decimales": "3",
+      "nombre": "Dolar Blue",
+      "variacion": "-2,600",
+      "venta": "150,000",
+      "ventaCero": "TRUE"
+    }
+  },
+  {
+    "casa": {
+      "agencia": "311",
+      "compra": "No Cotiza",
+      "decimales": "3",
+      "nombre": "Dolar Soja",
+      "variacion": "0",
+      "venta": "0",
+      "ventaCero": "TRUE"
+    }
+  },
+  {
+    "casa": {
+      "agencia": "312",
+      "compra": "156,730",
+      "decimales": "3",
+      "nombre": "Dolar Contado con Liqui",
+      "variacion": "1,050",
+      "venta": "157,050",
+      "ventaCero": "TRUE"
+    }
+  },
+  {
+    "casa": {
+      "agencia": "313",
+      "compra": "153,580",
+      "decimales": "3",
+      "nombre": "Dolar Bolsa",
+      "variacion": "0,160",
+      "venta": "153,420",
+      "ventaCero": "TRUE"
+    }
+  },
+  {
+    "casa": {
+      "agencia": "399",
+      "compra": "9.852,070",
+      "decimales": "3",
+      "nombre": "Bitcoin",
+      "variacion": "-0,16",
+      "venta": "57.709,495",
+      "ventaCero": "TRUE"
+    }
+  },
+  {
+    "casa": {
+      "agencia": "406",
+      "compra": "No Cotiza",
+      "nombre": "Dolar turista",
+      "variacion": "-0,07",
+      "venta": "163,19"
+    }
+  },
+  {
+    "casa": {
+      "agencia": "302",
+      "compra": "91,94",
+      "decimales": "3",
+      "nombre": "Dolar",
+      "venta": "98,19"
+    }
+  },
+  {
+    "casa": {
+      "afluencia": {
+      },
+      "agencia": "141",
+      "compra": "1.559,00",
+      "fecha": "05/05/15",
+      "mejor_compra": "True",
+      "mejor_venta": "False",
+      "nombre": "Argentina",
+      "observaciones": {
+      },
+      "recorrido": "16:30",
+      "venta": "0,26"
+    }
+  }
+]
