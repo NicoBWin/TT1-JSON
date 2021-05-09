@@ -12,8 +12,10 @@
 #include <fstream>
 #include <list>
 #include <exception>
+#include <sstream>
+#include <iomanip>
 #include <nlohmann/json.hpp>
-//Vamos a usar la librer�a NLOHMANN JSON 
+//Vamos a usar la librería NLOHMANN JSON 
 using json = nlohmann::json;
 
 using namespace std;
@@ -55,23 +57,29 @@ int main(void) {
 
 
     if (j.is_object()) {
-        cout << "es objeto" << endl;
+        std::cout << "es objeto" << std::endl;
     }
 
     if (j.is_array()) {
-        cout << "es array" << endl;
-    }    
-
-    j = j.array();
-
-    for (auto& it : j.items())
-    {
-        if (it.key() == "1") {
-            json valores = it.value();
-            std::cout << valores["created_at"] << std::endl;
-        }
+        std::cout << "es array" << std::endl;
     }
 
+    //cout << j << endl;
 
+    std::cout << std::endl;
+
+    //j = j.array();
+    j = j[1];
+    std::cout << std::setw(4) << j << std::endl;
+
+    //for (auto& it : j.items()) {
+    //    if (it.key() == "1") {
+    //        json valores = it.value();
+    //        std::cout << "Date:" << valores["created_at"] << std::endl;
+    //        std::cout << "Tweet:" << valores["text"] << std::endl;
+    //        valores = valores["user"];
+    //        std::cout << "User:" << valores["name"] << std::endl;
+    //    }
+    //}
     getchar();
 }

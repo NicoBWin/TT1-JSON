@@ -1,0 +1,11 @@
+{
+   dolar : 
+	fecha : "date", 
+	link : "LINK",
+	prices[
+	    dolaroficial : "precio promedio",
+	    dolarblue : "precio promedio",
+	    ...
+	    ...
+	]
+}

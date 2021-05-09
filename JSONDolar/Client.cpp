@@ -84,20 +84,6 @@ bool client(std::string query, json& j) {
 		//Si el request de CURL fue exitoso entonces la API devuelve un JSON
 		//con toda la informacion que le pedimos
 		j = json::parse(readString);
-
-		//Save file as json format
-		std::ofstream file("JSONS/dolar.json", std::ios::out | std::ios::binary);
-		if (file.is_open()) {
-			file << j;
-			file.close();
-		}
-		else {
-			std::cout << "Unable to open file " << std::endl;
-		}
-
-		std::cout << "DOLAR BLUE\n" << std::endl;
-		for (auto& it : j.items())
-			std::cout << it.key() << ": " << it.value() << std::endl;
 	}
 	else
 		std::cout << "Cannot download tweets. Unable to start cURL" << std::endl;
