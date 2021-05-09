@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{b591f594-9945-498c-97fe-047b891f2c87}</ProjectGuid>
-    <RootNamespace>JSONDolar</RootNamespace>
+    <ProjectGuid>{6e3030a0-50de-4054-a546-d607397e5f2d}</ProjectGuid>
+    <RootNamespace>JSONWeather</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -139,11 +139,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Client.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="src\Allegro.cpp" />
+    <ClCompile Include="src\Client.cpp" />
+    <ClCompile Include="src\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Client.h" />
+    <ClInclude Include="src\Allegro.h" />
+    <ClInclude Include="src\Client.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

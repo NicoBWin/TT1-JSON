@@ -21,7 +21,7 @@
 //Función que descarga los json  
 //Recibe el query y el json por referencia y guarda lo descargado ahí
 //Devuelve en su nombre “true” si descargó correctamente o “false" en caso contrario.
-bool client(std::string query, nlohmann::json& j);
+bool client(std::string citie, nlohmann::json& j);
 
 /*******************************************************************************
 ******************************************************************************/

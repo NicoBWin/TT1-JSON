@@ -23,10 +23,17 @@
 /*******************************************************************************
 * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
 ******************************************************************************/
-#define FONT1_FILE "fonts/font.ttf"
+#define FONT_FILE	"resources/font.ttf"
+#define BKG_FILE	"resources/weather.jpg"
 
-#define W_PIXELS	900
-#define H_PIXELS	900
+#define W_PIXELS	759
+#define H_PIXELS	520
+
+/*PUNTEROS ALLEGRO*/
+extern ALLEGRO_DISPLAY* display;
+extern ALLEGRO_EVENT_QUEUE* event_queue;
+extern ALLEGRO_FONT* font1;
+extern ALLEGRO_BITMAP* bkg;
 
 /*******************************************************************************
 * FUNCTION PROTOTYPES WITH GLOBAL SCOPE

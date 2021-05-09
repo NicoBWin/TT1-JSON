@@ -2,6 +2,7 @@
 @file     +Client.cpp+
 @brief    +Funciones para descargar los JSON+
 @author   +Nicolás Bustelo+
+@API	  +https://openweathermap.org/api+
 ******************************************************************************/
 
 /*******************************************************************************
@@ -9,8 +10,9 @@
 ******************************************************************************/
 #include "Client.h"
 
-//Vamos a usar la librería NLOHMANN JSON 
+//Vamos a usar la librería NLOHMANN JSON para el TOKEN
 using json = nlohmann::json;
+
 /*******************************************************************************
 * FUNCTION PROTOTYPES FOR PRIVATE FUNCTIONS WITH FILE LEVEL SCOPE
 ******************************************************************************/
@@ -18,17 +20,23 @@ static size_t myCallback(void* contents, size_t size, size_t nmemb, void* userp)
 
 /*******************************************************************************
 *******************************************************************************
-    				GLOBAL FUNCTION DEFINITIONS
+						GLOBAL FUNCTION DEFINITIONS
 *******************************************************************************
 ******************************************************************************/
-bool client(std::string query, json& j) {
+//Obtiene twits de una cuenta pública (en este caso, de "La Nación")
+bool client(std::string citie, nlohmann::json& j) {
 	// Vamos a utilizar la librería CURL ya que debemos conectarons a un servidor HTTPS
 	// (HTTP seguro) el cual requeire un protocolo especial de encriptación
 	CURL* curl;					//Variable donde vamos a guardar las configuraciones de una transferencia
 	CURLM* multiHandle;			//Variable donde vamos a atachear los easy handles
 	CURLcode res;
-	std::string readString;
+	std::string readString, token;
 
+	// Query para obtener el clima de una ciudad
+	std::string query = "api.openweathermap.org/data/2.5/weather?q=";
+	query.append(citie);	//Le agrego la ciudad que quiero ver el clima
+	std::string apiKey = "&appid=a235b300db9af049c7c62b8e566cba7d";	//It belongs to nbustelo@itba.edu.ar
+	query.append(apiKey);
 	/************************************************************************************
 	*									GET THE JSON									*
 	************************************************************************************/
