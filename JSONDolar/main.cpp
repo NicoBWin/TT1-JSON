@@ -26,7 +26,7 @@ using namespace std;
 * CONSTANT AND MACRO DEFINITIONS USING #DEFINE
 ******************************************************************************/
 //API de https://github.com/Castrogiovanni20/api-dolar-argentina
-#define DOFICIAL    "https://api-dolar-argentina.herokuapp.com/api/dolarblue"
+#define DOFICIAL    "https://api-dolar-argentina.herokuapp.com/api/dolaroficial"
 #define DBLUE       "https://api-dolar-argentina.herokuapp.com/api/dolarblue"
 #define DCCL        "https://api-dolar-argentina.herokuapp.com/api/contadoliqui"
 #define DTURISTA    "https://api-dolar-argentina.herokuapp.com/api/dolarturista"
@@ -42,7 +42,7 @@ using namespace std;
 ******************************************************************************/
 int main(void) {
     string dTypes[] = { "dolarOficial", "dolarBlue", "dolarCCL", "dolarTurista" };
-    float dPrices[] = { 89.5,155.0,142.3,147.7 };     //Precios al 04/01/2021 ordenados como dTypes
+    double dPrices[] = { 89.5,155.0,142.3,147.7 };     //Precios al 04/01/2021 ordenados como dTypes
     string query[] = { DOFICIAL, DBLUE, DCCL, DTURISTA } ;
 
 /******************************************************************************
@@ -84,8 +84,7 @@ int main(void) {
 
     // ------------------------------------------------------------------------------------- //
     // Guardamos el JSON creado
-    ofstream outputFile(path, std::ios::out | std::ios::binary);
-    outputFile = ofstream(OLDPATH);
+    ofstream outputFile(OLDPATH, std::ios::out | std::ios::binary);
     outputFile << jd.dump() << endl;    //Lo guardamos como string
     outputFile.close();
     cout << endl;
@@ -139,12 +138,14 @@ int main(void) {
             // El path debajo sería: el objeto "dolar" que tiene varias key, pero queremos la key "prices"
             //luego si notamos en el json se guardo como arreglo, entonces queremos el 0 (el único que hay) 
             //para finalmente pedir el key "dTypes" y nos devuelva el value del precio
-            float oldP = jd2["dolar"]["prices"][0][dTypes[i]];
+            double oldP = jd2["dolar"]["prices"][0][dTypes[i]];
             //Convertimos el string del precio nuevo a float
             string temp = j["venta"];
-            float newP = stof(temp);   
+            double newP = stof(temp);   
             //Calculamos la diferencia en %
-            float perc = (((newP*100.0)/oldP) - 100);   
+            double perc = (((newP*100.0)/oldP) - 100);   
+
+            std::cout << std::setprecision(2) << std::fixed; //Ajustamos el cout para dos decimales
 
             // Imprimimos el resultado
             cout << endl;
