@@ -26,15 +26,15 @@ static size_t myCallback(void* contents, size_t size, size_t nmemb, void* userp)
 bool client(std::string citie, nlohmann::json& j) {
 	// Vamos a utilizar la librería CURL ya que debemos conectarons a un servidor HTTPS
 	// (HTTP seguro) el cual requeire un protocolo especial de encriptación
-	CURL* curl;					//Variable donde vamos a guardar las configuraciones de una transferencia
-	CURLM* multiHandle;			//Variable donde vamos a atachear los easy handles
+	CURL* curl;					// Variable donde vamos a guardar las configuraciones de una transferencia
+	CURLM* multiHandle;			// Variable donde vamos a atachear los easy handles
 	CURLcode res;
-	std::string readString, token;
+	std::string readString;
 
 	// Query para obtener el clima de una ciudad
 	std::string query = "api.openweathermap.org/data/2.5/weather?q=";
-	query.append(citie);	//Le agrego la ciudad que quiero ver el clima
-	std::string apiKey = "&appid=a235b300db9af049c7c62b8e566cba7d";	//It belongs to nbustelo@itba.edu.ar
+	query.append(citie);	// Le agrego la ciudad que quiero ver el clima
+	std::string apiKey = "&appid=a235b300db9af049c7c62b8e566cba7d";	// It belongs to nbustelo@itba.edu.ar
 	query.append(apiKey);
 	/************************************************************************************
 	*									GET THE JSON									*
@@ -46,28 +46,28 @@ bool client(std::string citie, nlohmann::json& j) {
 	readString = "";
 	int stillRunning = 0;
 	if ((curl != NULL) & (multiHandle != NULL)) {
-		//Attacheo el easy handle para manejar una coneccion no bloqueante.
+		// Attacheo el easy handle para manejar una coneccion no bloqueante.
 		curl_multi_add_handle(multiHandle, curl);
 
-		//Seteamos URL FOLLOWLOCATION y los protocolos a utilizar.
+		// Seteamos URL FOLLOWLOCATION y los protocolos a utilizar.
 		curl_easy_setopt(curl, CURLOPT_URL, query.c_str());
 		curl_easy_setopt(curl, CURLOPT_FOLLOWLOCATION, 1L);
 		curl_easy_setopt(curl, CURLOPT_PROTOCOLS, CURLPROTO_HTTP | CURLPROTO_HTTPS);
 
-		//Seteamos el callback
+		// Seteamos el callback
 		curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, myCallback);
 		curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readString);
 
-		//Realizamos ahora un perform no bloqueante
+		// Realizamos ahora un perform no bloqueante
 		curl_multi_perform(multiHandle, &stillRunning);
 		while (stillRunning) {
-			//Debemos hacer polling de la transferencia hasta que haya terminado
+			// Debemos hacer polling de la transferencia hasta que haya terminado
 			curl_multi_perform(multiHandle, &stillRunning);
 
-			//Mientras tanto podemos hacer otras cosas
+			// Mientras tanto podemos hacer otras cosas
 		}
 
-		//Checkeamos errores
+		// Checkeamos errores
 		if (res != CURLE_OK) {
 			std::cerr << "curl_easy_perform() failed: " << curl_easy_strerror(res) << std::endl;
 			//Hacemos un clean up de curl antes de salir.
@@ -75,10 +75,10 @@ bool client(std::string citie, nlohmann::json& j) {
 			return false;
 		}
 
-		//Siempre realizamos el cleanup al final
+		// Siempre realizamos el cleanup al final
 		curl_easy_cleanup(curl);
 
-		//Si el request de CURL fue exitoso entonces la API devuelve un JSON
+		// Si el request de CURL fue exitoso entonces la API devuelve un JSON
 		//con toda la informacion que le pedimos
 		j = json::parse(readString);
 	}

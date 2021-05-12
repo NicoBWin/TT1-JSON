@@ -29,7 +29,7 @@
 #define W_PIXELS	759
 #define H_PIXELS	520
 
-/*PUNTEROS ALLEGRO*/
+/*EXTERN DE PUNTEROS ALLEGRO*/
 extern ALLEGRO_DISPLAY* display;
 extern ALLEGRO_EVENT_QUEUE* event_queue;
 extern ALLEGRO_FONT* font1;
@@ -43,10 +43,6 @@ int init_allegro();
 
 //Funcion que destruye todo allegro, no recibe nada y no devuelve nada
 void destroy_allegro(void);
-
-//Dibuja la interface
-void draw_interface();
-
 
 /*******************************************************************************
 ******************************************************************************/

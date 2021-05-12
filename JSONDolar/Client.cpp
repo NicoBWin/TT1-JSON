@@ -79,7 +79,7 @@ bool client(std::string query, json& j) {
 		std::cout << "Cannot download tweets. Unable to start cURL" << std::endl;
 
 	return true;	//TODO FUE EXITOSO
-	}
+}
 
 
 /*******************************************************************************

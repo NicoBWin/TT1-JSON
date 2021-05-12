@@ -22,7 +22,6 @@ ALLEGRO_EVENT_QUEUE* event_queue = NULL;
 ALLEGRO_FONT* font1 = NULL;
 ALLEGRO_BITMAP* bkg = NULL;
 
-
 /*******************************************************************************
 *******************************************************************************
     GLOBAL FUNCTION DEFINITIONS
@@ -123,7 +122,6 @@ void destroy_allegro(void) {
     al_destroy_display(display);
 
     al_shutdown_font_addon();
-    al_shutdown_ttf_addon();
     al_shutdown_image_addon();
     al_shutdown_primitives_addon();
 

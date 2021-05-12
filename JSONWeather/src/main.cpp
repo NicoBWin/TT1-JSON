@@ -15,9 +15,10 @@
 #include <iomanip>  //For setw() 
 //https://www.cplusplus.com/reference/iomanip/setw/
 
-#include "Client.h" // Incluye la librería NLOHMANN JSON 
+#include "Client.h"
 #include "Allegro.h"
 
+#include <nlohmann/json.hpp>
 //Ya que vamos a usar la librería NLOHMANN JSON 
 using json = nlohmann::json;
 
@@ -47,7 +48,7 @@ int main(void) {
     }
     
     //Ciudades posibles para ver el clima
-    string cities[] = { "Buenos Aires", "New York", "London", "Paris" };
+    string cities[] = { "Buenos Aires", "New York", "London", "Paris", "Estaciudad Noexiste" };
 
     //JSON donde estarán los datos
     json jw;
@@ -99,38 +100,48 @@ int main(void) {
 
 void save(json& j) {
     // Guardamos el JSON creado
-    string path = PATH;
-    path.append(j["name"]);
-    path.append(".json");
-    ofstream outputFile(path, std::ios::out | std::ios::binary);
-    if (outputFile.is_open()) {
-        outputFile << j.dump() << endl;    //Lo guardamos como string
+    if (j["cod"] == "200") {
+        string path = PATH;
+        path.append(j["name"]);
+        path.append(".json");
+        ofstream outputFile(path, std::ios::out | std::ios::binary);
+        if (outputFile.is_open()) {
+            outputFile << j.dump() << endl;    //Lo guardamos como string
+        }
+        else
+            std::cout << "Unable to open file " << std::endl;
+        outputFile.close();
     }
-    else
-        std::cout << "Unable to open file " << std::endl;
-    outputFile.close();
 }
 
 void draw(json& j) {
+    al_draw_bitmap(bkg, 0, 0, 0);  
     string aux;
-    al_draw_bitmap(bkg, 0, 0, 0);
-    al_draw_text(font1, al_map_rgb(0, 0, 0), 20, 15, 0, "City: ");
-    aux = j["name"];
-    al_draw_text(font1, al_map_rgb(0, 0, 0), 180, 15, 0, aux.c_str());
 
-    int var = j["main"]["temp"];
-    var -= 273; //Para expresarla en grados celcius
-    al_draw_textf(font1, al_map_rgb(0, 0, 0), 20, 100, 0, "Temp: %d C", var);
+    if (j["cod"] == "404") {
+        al_draw_text(font1, al_map_rgb(0, 0, 0), 20, 50, 0, "ERROR: 404");
+        aux = j["message"];
+        al_draw_text(font1, al_map_rgb(0, 0, 0), 20, 150, 0, aux.c_str());
+    }
+    else {
+        al_draw_text(font1, al_map_rgb(0, 0, 0), 20, 15, 0, "City: ");
+        aux = j["name"];
+        al_draw_text(font1, al_map_rgb(0, 0, 0), 180, 15, 0, aux.c_str());
 
-    var = j["main"]["humidity"];
-    al_draw_textf(font1, al_map_rgb(0, 0, 0), 20, 180, 0, "Hum: %d %% ", var);
+        int var = j["main"]["temp"];
+        var -= 273; //Para expresarla en grados celcius
+        al_draw_textf(font1, al_map_rgb(0, 0, 0), 20, 100, 0, "Temp: %d C", var);
 
-    var = j["main"]["pressure"];
-    al_draw_textf(font1, al_map_rgb(0, 0, 0), 20, 260, 0, "Pres: %d hPa ", var);
+        var = j["main"]["humidity"];
+        al_draw_textf(font1, al_map_rgb(0, 0, 0), 20, 180, 0, "Hum: %d %% ", var);
 
-    al_draw_text(font1, al_map_rgb(200, 200, 200), 20, 350, 0, "Sky Description:");
-    aux = j["weather"][0]["description"];
-    al_draw_text(font1, al_map_rgb(255, 255, 255), 20, 400, 0, aux.c_str());
+        var = j["main"]["pressure"];
+        al_draw_textf(font1, al_map_rgb(0, 0, 0), 20, 260, 0, "Pres: %d hPa ", var);
+
+        al_draw_text(font1, al_map_rgb(200, 200, 200), 20, 350, 0, "Sky Description:");
+        aux = j["weather"][0]["description"];
+        al_draw_text(font1, al_map_rgb(255, 255, 255), 20, 400, 0, aux.c_str());
+    }
 
     al_flip_display();
 }
