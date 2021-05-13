@@ -9,7 +9,5 @@
 * Allegro5
 * LibCurl
 ------------------------------------------------
-Alguna pregunta? 
-Alguna sugerencia? 
-*nbustelo@itba.edu.com
+Alguna pregunta? Alguna sugerencia? -> nbustelo@itba.edu.com
 
