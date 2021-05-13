@@ -18,6 +18,7 @@
 
 #include "Client.h" // Incluye la librería NLOHMANN JSON 
 
+#include <nlohmann/json.hpp>
 //Ya que vamos a usar la librería NLOHMANN JSON 
 using json = nlohmann::json;
 
@@ -90,7 +91,7 @@ int main(void) {
     cout << endl;
 
 /******************************************************************************
-* MEDIANDE UNA API BUSCAMOS EL PRECIO ACTUAL Y COMPARAMOS CON EL GUARDADO
+* MEDIANDTE UNA API BUSCAMOS EL PRECIO ACTUAL Y COMPARAMOS CON EL GUARDADO
 ******************************************************************************/
     // Creamos un dato tipo json donde se guardarán los datos a descargar
     json j;
