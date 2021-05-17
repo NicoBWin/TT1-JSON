@@ -8,7 +8,7 @@
 - Obtener el precio del dolar actual y compararlo con el del 04/01/2021
 ## Ejemplo 2:
 - Obtener el clima de 4 ciudades precargadas y mostar una devolución de "ciudad no encontrada".
-- Para mostrar las diferentes ciudades usar las flechas UP y DONW del teclado
+- Para mostrar las diferentes ciudades usar las flechas UP y DOWN del teclado
 ------------------------------------------------
 ### Librerias necesarias: (Todas se pueden obtener de vcpkg) 
 * nlohmann/json
