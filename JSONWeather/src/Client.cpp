@@ -10,7 +10,7 @@
 ******************************************************************************/
 #include "Client.h"
 
-//Vamos a usar la librería NLOHMANN JSON para el TOKEN
+//Vamos a usar la biblioteca NLOHMANN JSON para el TOKEN
 using json = nlohmann::json;
 
 /*******************************************************************************
