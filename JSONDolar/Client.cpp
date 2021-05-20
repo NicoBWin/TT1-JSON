@@ -9,7 +9,7 @@
 ******************************************************************************/
 #include "Client.h"
 
-//Vamos a usar la librería NLOHMANN JSON 
+//Vamos a usar la biblioteca NLOHMANN JSON 
 using json = nlohmann::json;
 /*******************************************************************************
 * FUNCTION PROTOTYPES FOR PRIVATE FUNCTIONS WITH FILE LEVEL SCOPE
