@@ -1,8 +1,8 @@
 /***************************************************************************//**
 @file     +main.cpp+
-@brief    +Ejemplo pr·ctico de JSON integrado con API sobre el dolar+
+@brief    +Ejemplo pr√°ctico de JSON integrado con API sobre el dolar+
 @version  +1.0+
-@author   +Nicol·s Bustelo+
+@author   +Nicol√°s Bustelo+
 ******************************************************************************/
 
 /*******************************************************************************
@@ -16,10 +16,10 @@
 #include <iomanip>  //For setw() 
 //https://www.cplusplus.com/reference/iomanip/setw/
 
-#include "Client.h" // Incluye la librerÌa NLOHMANN JSON 
+#include "Client.h" // Incluye la librer√≠a NLOHMANN JSON 
 
 #include <nlohmann/json.hpp>
-//Ya que vamos a usar la librerÌa NLOHMANN JSON 
+//Ya que vamos a usar la biblioteca NLOHMANN JSON 
 using json = nlohmann::json;
 
 using namespace std;
@@ -52,7 +52,7 @@ int main(void) {
     // Cargamos datos de diferentes formas
     // Lo guardamos como un archivo .json
 
-    // Cargamos los datos de principio de aÒo para comparar con los actuales
+    // Cargamos los datos de principio de a√±o para comparar con los actuales
     json jd;
     // Creamos un objeto vacio
     jd["dolar"] = json::object();
@@ -93,7 +93,7 @@ int main(void) {
 /******************************************************************************
 * MEDIANDTE UNA API BUSCAMOS EL PRECIO ACTUAL Y COMPARAMOS CON EL GUARDADO
 ******************************************************************************/
-    // Creamos un dato tipo json donde se guardar·n los datos a descargar
+    // Creamos un dato tipo json donde se guardar√°n los datos a descargar
     json j;
     // Creamos un dato tipo json donde se para leer el json guardado previamente
     json jd2;
@@ -111,7 +111,7 @@ int main(void) {
     //EJEMPLO 2
     //jd2.parse(oldDolar);
     oldDolar.close();   // Cerramos el archivo
-    //PequeÒo mensaje para iniciar la comparacion
+    //Peque√±o mensaje para iniciar la comparacion
     cout << "\nVariacion del dolar desde el " << jd2["dolar"]["fecha"] << " hasta la fecha" << endl;
 
     // ------------------------------------------------------------------------------------- //
@@ -134,10 +134,10 @@ int main(void) {
                 std::cout << "Unable to open file " << std::endl;
 
             // ------------------------------------------------------------------------------------- //
-            // Comparamos e indicamos el precio actual y la diferencia con el de principio de aÒo
+            // Comparamos e indicamos el precio actual y la diferencia con el de principio de a√±o
            
-            // El path debajo serÌa: el objeto "dolar" que tiene varias key, pero queremos la key "prices"
-            //luego si notamos en el json se guardo como arreglo, entonces queremos el 0 (el ˙nico que hay) 
+            // El path debajo ser√≠a: el objeto "dolar" que tiene varias key, pero queremos la key "prices"
+            //luego si notamos en el json se guardo como arreglo, entonces queremos el 0 (el √∫nico que hay) 
             //para finalmente pedir el key "dTypes" y nos devuelva el value del precio
             double oldP = jd2["dolar"]["prices"][0][dTypes[i]];
             //Convertimos el string del precio nuevo a float
