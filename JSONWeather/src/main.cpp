@@ -1,8 +1,8 @@
 /***************************************************************************//**
 @file     +main.cpp+
-@brief    +Ejemplo práctico de JSON integrado con API sobre el clima+
+@brief    +Ejemplo prÃ¡ctico de JSON integrado con API sobre el clima+
 @version  +1.0+
-@author   +Nicolás Bustelo+
+@author   +NicolÃ¡s Bustelo+
 ******************************************************************************/
 
 /*******************************************************************************
@@ -19,7 +19,7 @@
 #include "Allegro.h"
 
 #include <nlohmann/json.hpp>
-//Ya que vamos a usar la librería NLOHMANN JSON 
+//Ya que vamos a usar la biblioteca NLOHMANN JSON 
 using json = nlohmann::json;
 
 using namespace std;
@@ -42,7 +42,7 @@ void save(json& j);
 *******************************************************************************
 ******************************************************************************/
 int main(void) {
-    if (!init_allegro()) {  //Iniciamos la pequeña interfaz para imprimir los datos
+    if (!init_allegro()) {  //Iniciamos la pequeÃ±a interfaz para imprimir los datos
         cout << "Error in allegro inicialization" << endl;
         return 0;
     }
@@ -50,7 +50,7 @@ int main(void) {
     //Ciudades posibles para ver el clima
     string cities[] = { "Buenos Aires", "New York", "London", "Paris", "Estaciudad Noexiste" };
 
-    //JSON donde estarán los datos
+    //JSON donde estarÃ¡n los datos
     json jw;
 
     int citiNumber = 0; //Numero de ciudad a mostrar datos
@@ -93,7 +93,7 @@ int main(void) {
         }
     }
 
-    destroy_allegro();      //Destruye recursos y finaliza la simulación
+    destroy_allegro();      //Destruye recursos y finaliza la simulaciÃ³n
     cout << "See you next time..." << endl;
     return 0;
 }
